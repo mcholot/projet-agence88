@@ -1,0 +1,62 @@
+<head>
+  {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link href="/assets/css/menu.scss" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://use.fontawesome.com/releases/v5.0.11/css/all.css" rel="stylesheet">
+  {% endblock %}
+
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% endblock %}
+</head>
+
+
+
+{% block body %}
+<body class="body-menu">
+  <div class="nav-side-menu">
+    <div class="brand">AP-HP</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a href="{{ path('app_home') }}"><i class="fas fa-home fa-lg"></i> Accueil</a>
+                </li>
+
+                <li>
+                  <a href="{{ path('app_planner') }}"><i class="fas fa-calendar fa-lg"></i> Planification des installations</a>
+                </li>
+
+                <li>
+                  <a href="#"><i class="fas fa-box fa-lg"></i> Suivi des stocks</a>
+                </li>
+
+                <li>
+                  <a href="#"><i class="fas fa-chart-line fa-lg"></i> Statistiques</a>
+                </li>
+
+                <li>
+                  <a href="#"><i class="fas fa-book fa-lg"></i> Bibliothèque de documents</a>
+                </li>
+
+                <li>
+                  <a href="#"><i class="fas fa-users fa-lg"></i> Contacts</a>
+                </li>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                  <li>
+                    <a href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt fa-lg"></i> Déconnexion</a>
+                  </li>
+
+                {% endif %}
+            </ul>
+     </div>
+  </div>
+</body>
+{% endblock %}
